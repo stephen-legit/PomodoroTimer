@@ -1,0 +1,64 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    text-align: center;
+    background-color: #ffeaa7;
+}
+
+.app {
+    background: #ff7675;
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px;
+    margin: 50px auto;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #fff;
+}
+
+.timer {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 20px 0;
+    background: #fab1a0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+button {
+    background: #fdcb6e;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #e17055;
+    color: white;
+}
+
+.task-input {
+    margin-top: 20px;
+}
+
+input {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+}
+
+#task-list li {
+    background: #dfe6e9;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
