@@ -1,64 +1,113 @@
 body {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
-    background-color: #ffeaa7;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #a2d9ff, #fdf7d3);
 }
 
+/* App Container */
 .app {
-    background: #ff7675;
+    background: #ffe5b9;
+    border: 4px solid #ffb347;
     padding: 20px;
-    border-radius: 15px;
-    width: 300px;
+    border-radius: 20px;
+    width: 360px;
     margin: 50px auto;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    position: relative;
 }
 
-h1 {
-    color: #fff;
-}
-
+/* Timer Section */
 .timer {
-    font-size: 3rem;
-    font-weight: bold;
+    font-size: 4rem;
+    color: #ff6b6b;
     margin: 20px 0;
-    background: #fab1a0;
-    padding: 10px;
-    border-radius: 10px;
+    background: #fff5e6;
+    padding: 15px;
+    border-radius: 15px;
+    border: 2px solid #ffcc80;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Buttons */
 button {
-    background: #fdcb6e;
+    background: #34d1bf;
+    color: #fff;
+    font-size: 1.2rem;
     border: none;
-    padding: 10px 15px;
-    margin: 5px;
+    border-radius: 10px;
+    padding: 12px 20px;
+    margin: 10px;
     cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
-    background: #e17055;
-    color: white;
+    background: #27ab8f;
+    transform: scale(1.1);
 }
 
+/* Decorative Elements */
+.decoration {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+}
+
+/* Task Input */
 .task-input {
     margin-top: 20px;
 }
 
 input {
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
+    padding: 10px;
+    border: 2px solid #34d1bf;
+    border-radius: 10px;
+    font-size: 1rem;
+    width: 80%;
 }
 
+/* Task List */
 #task-list {
     list-style: none;
     padding: 0;
+    margin-top: 20px;
 }
 
 #task-list li {
-    background: #dfe6e9;
-    margin: 5px;
-    padding: 5px;
+    background: #fff;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-task {
+    background: #ff6b6b;
+    color: #fff;
+    border: none;
     border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.delete-task:hover {
+    background: #e74c3c;
+}
+
+/* Animation */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.timer.running {
+    animation: bounce 1s infinite;
 }

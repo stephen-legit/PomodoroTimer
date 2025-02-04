@@ -8,6 +8,7 @@ const secondsDisplay = document.getElementById("seconds");
 const startButton = document.getElementById("start");
 const pauseButton = document.getElementById("pause");
 const resetButton = document.getElementById("reset");
+const timerDisplay = document.querySelector(".timer");
 
 startButton.addEventListener("click", startTimer);
 pauseButton.addEventListener("click", pauseTimer);
@@ -17,12 +18,14 @@ function startTimer() {
     if (!isRunning) {
         isRunning = true;
         timer = setInterval(updateTimer, 1000);
+        timerDisplay.classList.add("running"); // Add animation
     }
 }
 
 function pauseTimer() {
     clearInterval(timer);
     isRunning = false;
+    timerDisplay.classList.remove("running"); // Remove animation
 }
 
 function resetTimer() {
@@ -31,6 +34,7 @@ function resetTimer() {
     minutes = 25;
     seconds = 0;
     updateDisplay();
+    timerDisplay.classList.remove("running"); // Remove animation
 }
 
 function updateTimer() {
@@ -38,6 +42,7 @@ function updateTimer() {
         if (minutes === 0) {
             clearInterval(timer);
             alert("Time's up! Take a break! 🎉");
+            timerDisplay.classList.remove("running"); // Remove animation
             return;
         }
         minutes--;
