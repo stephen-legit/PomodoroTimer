@@ -74,3 +74,47 @@ document.getElementById("minimize").addEventListener("click", () => {
 document.getElementById("close").addEventListener("click", () => {
     ipcRenderer.send("close-window");
 });
+
+// Dark Mode Toggle
+const themeToggleButton = document.getElementById("theme-toggle");
+
+themeToggleButton.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    document.querySelector(".app").classList.toggle("dark-mode");
+    document.querySelector(".timer").classList.toggle("dark-mode");
+    themeToggleButton.classList.toggle("dark-mode");
+});
+
+// Custom Timer Settings
+const workTimeInput = document.getElementById("work-time");
+const breakTimeInput = document.getElementById("break-time");
+
+function resetTimer() {
+    clearInterval(timer);
+    isRunning = false;
+    minutes = parseInt(workTimeInput.value) || 25;
+    seconds = 0;
+    updateDisplay();
+    timerDisplay.classList.remove("running");
+}
+
+function updateTimer() {
+    if (seconds === 0) {
+        if (minutes === 0) {
+            // Switch to break time after work session
+            if (isBreakTime) {
+                minutes = parseInt(workTimeInput.value) || 25; // reset work time
+                isBreakTime = false;
+            } else {
+                minutes = parseInt(breakTimeInput.value) || 5; // reset break time
+                isBreakTime = true;
+            }
+            seconds = 59;
+        } else {
+            minutes--;
+        }
+    } else {
+        seconds--;
+    }
+    updateDisplay();
+}
