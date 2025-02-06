@@ -1,24 +1,38 @@
 /* Full-Screen Background */
-body {
+html, body {
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background: #e9ecef;
-    font-family: 'Poppins', sans-serif;
+    background: transparent;
 }
 
 /* App Window */
 .app {
-    background: #fefefe;
+    width: 100vw;
+    height: 100vh;
     border-radius: 25px;
-    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
-    width: 320px;
+    box-shadow: none;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    position: relative;
+}
+
+.app::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(./public/IsometricRoom.jpg) no-repeat center center/cover;
+    opacity: 1;
+    z-index: -1;
+    filter: blur(0.5px);
 }
 
 /* Title Bar */
@@ -57,21 +71,23 @@ body {
 
 /* App Content */
 .content {
-    /* padding: 20px; */
-    text-align: center;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 100%;
+    gap: 20px;
+    padding: 20px;
 }
 
 /* Timer Display */
 .timer {
-    font-size: 3rem;
+    font-size: 4.5rem;
+    font-weight: bold;
     color: #2c3e50;
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 10px;
     transition: transform 0.2s ease-in-out;
 }
 
@@ -101,8 +117,12 @@ button:hover {
 .settings {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 10px;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2c3e50;
+    font-family: 'Poppins', sans-serif;
 }
 
 .setting-item {
@@ -118,16 +138,28 @@ button:hover {
 
 .setting-item input {
     width: 60px;
-    padding: 5px;
-    font-size: 14px;
-    border: 1px solid #ccc;
+    padding: 8px;
+    font-size: 1rem;
+    border: 2px solid #3498db;
     border-radius: 5px;
     text-align: center;
+    outline: none;
+    transition: all 0.2s;
 }
 
 .setting-item input:focus {
-    border-color: #3498db;
-    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0px 0px 8px rgba(41, 128, 185, 0.5);
+}
+
+.settings.dark-mode {
+    color: #ecf0f1;
+}
+
+.settings input.dark-mode {
+    background: #2c3e50;
+    border-color: #1abc9c;
+    color: #ecf0f1;
 }
 
 /*Dark Mode Toggle */
@@ -148,10 +180,45 @@ button.dark-mode {
     background: #1abc9c;
 }
 
+/* Theme Toggle Button */
+#theme-toggle {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    color: #2c3e50;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover & Active Effect */
+#theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+}
+
+/* Dark Mode Toggle Appearance */
+.dark-mode #theme-toggle {
+    color: #ecf0f1;
+}
+
+.dark-mode #theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
 /* Compact Timer Buttons */
 .controls {
     display: flex;
     justify-content: center;
+    gap: 10px;
 }
 
 /* App Window Size Constraints */

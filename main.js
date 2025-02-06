@@ -2,6 +2,7 @@ let minutes = 25;
 let seconds = 0;
 let timer;
 let isRunning = false;
+let isBreakTime = false;
 
 // DOM elements
 const minutesDisplay = document.getElementById("minutes");
@@ -10,6 +11,27 @@ const startButton = document.getElementById("start");
 const pauseButton = document.getElementById("pause");
 const resetButton = document.getElementById("reset");
 const timerDisplay = document.querySelector(".timer");
+
+// Custom Timer Settings
+const workTimeInput = document.getElementById("work-time");
+const breakTimeInput = document.getElementById("break-time");
+
+// Update time immediately when user changes input
+workTimeInput.addEventListener("input", () => {
+    if (!isRunning && !isBreakTime) {
+        minutes = parseInt(workTimeInput.value) || 25;
+        seconds = 0;
+        updateDisplay();
+    }
+});
+
+breakTimeInput.addEventListener("input", () => {
+    if (!isRunning && isBreakTime) {
+        minutes = parseInt(breakTimeInput.value) || 5;
+        seconds = 0;
+        updateDisplay();
+    }
+});
 
 // Event Listeners
 startButton.addEventListener("click", startTimer);
@@ -42,17 +64,25 @@ function resetTimer() {
 }
 
 function updateTimer() {
-    if (seconds === 0) {
-        if (minutes === 0) {
-            clearInterval(timer);
-            alert("Time's up! Take a break! 🎉");
-            timerDisplay.classList.remove("running");
-            return;
+    if (minutes === 0 && seconds === 0) {
+        // Timer finished, switch between work/break
+        if (!isBreakTime) {
+            minutes = parseInt(breakTimeInput.value) || 5; // Switch to break time
+            isBreakTime = true;
+            alert("Break time! Relax ☕️");
+        } else {
+            minutes = parseInt(workTimeInput.value) || 25; // Switch to work time
+            isBreakTime = false;
+            alert("Back to work! 🚀");
         }
-        minutes--;
-        seconds = 59;
+        seconds = 0;
     } else {
-        seconds--;
+        if (seconds === 0) {
+            minutes--;
+            seconds = 59;
+        } else {
+            seconds--;
+        }
     }
     updateDisplay();
 }
@@ -84,37 +114,3 @@ themeToggleButton.addEventListener("click", () => {
     document.querySelector(".timer").classList.toggle("dark-mode");
     themeToggleButton.classList.toggle("dark-mode");
 });
-
-// Custom Timer Settings
-const workTimeInput = document.getElementById("work-time");
-const breakTimeInput = document.getElementById("break-time");
-
-function resetTimer() {
-    clearInterval(timer);
-    isRunning = false;
-    minutes = parseInt(workTimeInput.value) || 25;
-    seconds = 0;
-    updateDisplay();
-    timerDisplay.classList.remove("running");
-}
-
-function updateTimer() {
-    if (seconds === 0) {
-        if (minutes === 0) {
-            // Switch to break time after work session
-            if (isBreakTime) {
-                minutes = parseInt(workTimeInput.value) || 25; // reset work time
-                isBreakTime = false;
-            } else {
-                minutes = parseInt(breakTimeInput.value) || 5; // reset break time
-                isBreakTime = true;
-            }
-            seconds = 59;
-        } else {
-            minutes--;
-        }
-    } else {
-        seconds--;
-    }
-    updateDisplay();
-}

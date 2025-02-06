@@ -4,8 +4,8 @@ let mainWindow;
 
 app.whenReady().then(() => {
     mainWindow = new BrowserWindow({
-        width: 360,
-        height: 500,
+        width: 400,
+        height: 550,
         resizable: false,
         webPreferences: {
             nodeIntegration: true,
@@ -13,7 +13,6 @@ app.whenReady().then(() => {
         },
         frame: false,
         transparent: true,
-        backgroundColor: "#fefefe",
     });
 
     mainWindow.loadFile("index.html");
