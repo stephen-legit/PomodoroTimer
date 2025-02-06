@@ -8,21 +8,24 @@
 </head>
 <body>
     <div class="app">
-        <h1>Pomodoro Timer</h1>
-        <div class="timer">
-            <span id="minutes">25</span>:<span id="seconds">00</span>
+        <div class="title-bar">
+            <span class="title">Pomodoro Timer</span>
+            <div class="controls">
+                <button id="minimize">_</button>
+                <button id="close">X</button>
+            </div>            
         </div>
-        <div class="controls">
-          <button id="start">Start</button>
-          <button id="pause">Pause</button>
-          <button id="reset">Reset</button>
+        <div class="content">
+            <div class="timer">
+                <span id="minutes">25</span>:<span id="seconds">00</span>
+            </div>
+            <div class="controls">
+                <button id="start">Start</button>
+                <button id="pause">Pause</button>
+                <button id="reset">Reset</button>
+            </div>
         </div>
-        <div class="task-input">
-            <input type="text" id="task" placeholder="Enter your task...">
-            <button id="add-task">Add Task</button>
-        </div>
-        <ul id="task-list"></ul>
     </div>
-    <script type="module" src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
