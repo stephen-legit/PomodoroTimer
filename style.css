@@ -33,6 +33,7 @@ body {
     font-weight: bold;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
+    -webkit-app-region: drag;
 }
 
 .title-bar .controls {
@@ -47,6 +48,7 @@ body {
     font-size: 16px;
     cursor: pointer;
     outline: none;
+    -webkit-app-region: no-drag;
 }
 
 .title-bar button:hover {

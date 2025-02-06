@@ -14,7 +14,6 @@ app.whenReady().then(() => {
         frame: false,
         transparent: true,
         backgroundColor: "#fefefe",
-        // roundedCorners: true,
     });
 
     mainWindow.loadFile("index.html");
