@@ -152,17 +152,7 @@ button:hover {
     box-shadow: 0px 0px 8px rgba(41, 128, 185, 0.5);
 }
 
-.settings.dark-mode {
-    color: #ecf0f1;
-}
-
-.settings input.dark-mode {
-    background: #2c3e50;
-    border-color: #1abc9c;
-    color: #ecf0f1;
-}
-
-/*Dark Mode Toggle */
+/* Dark Mode Styles */
 body.dark-mode {
     background: #2c3e50;
     color: #ecf0f1;
@@ -199,13 +189,11 @@ button.dark-mode {
     transition: all 0.3s ease-in-out;
 }
 
-/* Hover & Active Effect */
 #theme-toggle:hover {
     background: rgba(0, 0, 0, 0.1);
     transform: scale(1.1);
 }
 
-/* Dark Mode Toggle Appearance */
 .dark-mode #theme-toggle {
     color: #ecf0f1;
 }

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain } = require("electron");
 
 let mainWindow;
 
@@ -18,16 +18,11 @@ app.whenReady().then(() => {
     mainWindow.loadFile("index.html");
 });
 
-// Close app when all windows are closed
+// Handle window close event
 app.on("window-all-closed", () => {
     if (process.platform !== "darwin") app.quit();
 });
 
-// IPC Event Handler
-ipcMain.on("minimize-window", () => {
-    mainWindow.minimize();
-});
-
-ipcMain.on("close-window", () => {
-    mainWindow.close();
-});
+// IPC event handlers
+ipcMain.on("minimize-window", () => mainWindow.minimize());
+ipcMain.on("close-window", () => mainWindow.close());
